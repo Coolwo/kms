@@ -1,7 +1,7 @@
 <html>
 <head>
 <style>
-#drag {
+.drag {
   position: absolute !important;
 }
 
@@ -40,8 +40,8 @@
 <script type="text/javascript" src="hpscript.js"></script>
 </head>
 <body>
-		
-<div id="drag">
+<form id="body">		
+<div id="august" class="drag">
 	<div id="dragheader"><h4>Agust</h4></div>
 Max HP: <span class="g">22</span><br />
 Armor Class: <span class="b">14</span><br />
@@ -50,35 +50,35 @@ HP: <input class="r" type="text"></input>
 </div>
 
 
-<div id="drag">
+<div id="shiro" class="drag">
 	<div id="dragheader"><h4>Shiro</h4></div>
 Max HP: <span class="g">25</span><br />
 Armor Class: <span class="b">13</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input></div>
 	
-<div id="drag">
+<div id="oakhugger" class="drag">
 	<div id="dragheader"><h4>OakHugger</h4></div>
 Max HP: <span class="g">17</span><br />
 Armor Class: <span class="b">15</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input></div>
 	
-<div id="drag">
+<div id="citrine" class="drag">
 	<div id="dragheader"><h4>Citrine</h4></div>
 Max HP: <span class="g">20</span><br />
 Armor Class: <span class="b">13</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input></div>
 	
-<div id="drag">
+<div id="galilea" class="drag">
 	<div id="dragheader"><h4>Galilea</h4></div>
 Max HP: <span class="g">18</span><br />
 Armor Class: <span class="b">13</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input></div>
 	
-<div id="drag">
+<div id="audrey" class="drag">
 	<div id="dragheader"><h4>Audrey</h4></div>
 Max HP: <span class="g">25</span><br />
 Armor Class: <span class="b">17</span><br />
@@ -86,7 +86,7 @@ Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input>
 </div>
 	
-<div id="drag">
+<div id="enemy1" class="drag">
 	<div id="dragheader"><h4>Enemy</h4></div>
 Name: <input class="m" type="text"></input><br />
 Max HP: <input class="g"></input><br />
@@ -95,7 +95,7 @@ Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input><br />
 </div>
 
-<div id="drag">
+<div id="enemy2" class="drag">
 	<div id="dragheader"><h4>Enemy</h4></div>
 Name: <input class="m" type="text"></input><br />
 Max HP: <input class="g"></input><br />
@@ -104,7 +104,7 @@ Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input><br />
 </div>
 
-<div id="drag">
+<div id="enemy3" class="drag">
 	<div id="dragheader"><h4>Enemy</h4></div>
 Name: <input class="m" type="text"></input><br />
 Max HP: <input class="g"></input><br />
@@ -112,18 +112,30 @@ Armor Class: <input class="b"></input><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input><br /></div>
 
-<div id="drag">
-	<div id="dragheader"><h4>Enemy</h4></div>
+<div id="enemy4" class="drag">
+	<div id="dragheader">
+        <h4>Enemy</h4>
+    </div>
 Name: <input class="m" type="text"></input><br />
 Max HP: <input class="g"></input><br />
 Armor Class: <input class="b"></input><br />
 Init: <input class="t" type="text"></input><br />
-HP: <input class="r" type="text"></input><br /></div>
-
+HP: <input class="r" type="text"></input><br />
+</div>
+</form>
 <button onclick="clearInput()">Clear Input</button>
 </body>
 <script>
-dragElement(document.getElementById("drag"));
+dragElement(document.getElementById("august"));
+dragElement(document.getElementById("shiro"));
+dragElement(document.getElementById("oakhugger"));
+dragElement(document.getElementById("citrine"));
+dragElement(document.getElementById("galilea"));
+dragElement(document.getElementById("audrey"));
+dragElement(document.getElementById("enemy1"));
+dragElement(document.getElementById("enemy2"));
+dragElement(document.getElementById("enemy3"));
+dragElement(document.getElementById("enemy4"));
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;

@@ -1,6 +1,20 @@
 <html>
 <head>
 <style>
+#drag {
+  position: absolute;
+  z-index: 4;
+  top: 25vh;
+  left: 25vw;
+}
+
+#dragheader {
+  padding-bottom: 10px;
+  cursor: move;
+  height: 10px;
+  z-index: 5;
+  background-color: #2196F3;
+}
 .enemy{
 	left: 500px;
 }
@@ -43,91 +57,147 @@ div {
 </head>
 <body>
 <form id="hpInputs">
+	
+<div id="drag">
+	<div id="dragheader"><h4>Agust</h4></div>
 <div id="agust">
-<h4>Agust</h4>
 Max HP: <span class="g">22</span><br />
 Armor Class: <span class="b">14</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input>
 </div>
+</div>
+	
+<div id="drag">
+	<div id="dragheader"><h4>Shiro</h4></div>
 <div id="shiro">
-<h4>Shiro</h4>
 Max HP: <span class="g">25</span><br />
 Armor Class: <span class="b">13</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input>
-</div>
+	</div></div>
+	
+<div id="drag">
+	<div id="dragheader"><h4>OakHugger</h4></div>
 <div id="oakhugger">
-<h4>OakHugger</h4>
 Max HP: <span class="g">17</span><br />
 Armor Class: <span class="b">15</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input>
-</div>
+</div></div>
+	
+<div id="drag">
+	<div id="dragheader"><h4>Citrine</h4></div>
 <div id="citrine">
-<h4>Citrine</h4>
 Max HP: <span class="g">20</span><br />
 Armor Class: <span class="b">13</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input>
-</div>
+</div></div>
+	
+<div id="drag">
+	<div id="dragheader"><h4>Galilea</h4></div>
 <div id="aria">
-<h4>Galilea</h4>
 Max HP: <span class="g">18</span><br />
 Armor Class: <span class="b">13</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input>
-</div>
+</div></div>
+	
+<div id="drag">
+	<div id="dragheader"><h4>Audrey</h4></div>
 <div id="audrey">
-<h4>Audrey</h4>
 Max HP: <span class="g">25</span><br />
 Armor Class: <span class="b">17</span><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input>
-</div>
+</div></div>
+	
+<div id="drag">
+	<div id="dragheader"><h4>Enemy</h4></div>
 <div id="enemy">
-<h4>Enemy</h4>
 Name: <input class="m" type="text"></input><br />
 Max HP: <input class="g"></input><br />
 Armor Class: <input class="b"></input><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input><br />
-</div>
+</div></div>
+
+<div id="drag">
+	<div id="dragheader"><h4>Enemy</h4></div>
 <div id="enemy">
-<h4>Enemy</h4>
 Name: <input class="m" type="text"></input><br />
 Max HP: <input class="g"></input><br />
 Armor Class: <input class="b"></input><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input><br />
-</div>
+</div></div>
+
+<div id="drag">
+	<div id="dragheader"><h4>Enemy</h4></div>
 <div id="enemy">
-<h4>Enemy</h4>
 Name: <input class="m" type="text"></input><br />
 Max HP: <input class="g"></input><br />
 Armor Class: <input class="b"></input><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input><br />
-</div>
+</div></div>
+
+<div id="drag">
+	<div id="dragheader"><h4>Enemy</h4></div>
 <div id="enemy">
-<h4>Enemy</h4>
 Name: <input class="m" type="text"></input><br />
 Max HP: <input class="g"></input><br />
 Armor Class: <input class="b"></input><br />
 Init: <input class="t" type="text"></input><br />
 HP: <input class="r" type="text"></input><br />
-</div>
-<div id="enemy">
-<h4>Enemy</h4>
-Name: <input class="m" type="text"></input><br />
-Max HP: <input class="g"></input><br />
-Armor Class: <input class="b"></input><br />
-Init: <input class="t" type="text"></input><br />
-HP: <input class="r" type="text"></input><br />
-</div>
+</div></div>
 
 </form>
 <button onclick="clearInput()">Clear Input</button>
 </body>
+<script>
+dragElement(document.getElementById("drag"));
 
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
 </html>
